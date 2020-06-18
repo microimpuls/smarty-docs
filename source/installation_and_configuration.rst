@@ -62,7 +62,7 @@
 
 Первичная установка схемы базы данных осуществляется командой: ::
 
-    python /usr/share/nginx/html/microimpuls/smarty/manage.py migrate --settings=settings.<settings filename>
+    smarty_manage migrate --settings=settings.<settings filename>
 
 - *<settings filename>* - имя файла настроек Smarty, в котором должны быть установлены параметры подключения к БД
   (см. :ref:`Описание основных параметров <settings-description>`).
@@ -80,7 +80,7 @@
 
 Создание пользователя с правами служебного администратора осуществляется командой: ::
 
-    python /usr/share/nginx/html/microimpuls/smarty/manage.py createsuperuser --settings=settings.<settings filename>
+    smarty_manage createsuperuser --settings=settings.<settings filename>
 
 - *<settings filename>* - имя файла настроек Smarty, в котором должны быть установлены параметры подключения к БД
   (см. :ref:`Описание основных параметров <settings-description>`).
@@ -93,7 +93,7 @@
 
 Для создания системных объектов Smarty в базе данных, а также примера настроек выполните команду: ::
 
-    python /usr/share/nginx/html/microimpuls/smarty/manage.py setup_initial_data --settings=settings.<settings filename>
+    smarty_manage setup_initial_data --settings=settings.<settings filename>
 
 - *<settings filename>* - имя файла настроек Smarty, в котором должны быть установлены параметры подключения к БД
   (см. :ref:`Описание основных параметров <settings-description>`).
@@ -110,7 +110,7 @@
 
 В случае необходимости создания нового объекта Client и копирования всех данных можно использовать команду клонирования: ::
 
-    python /usr/share/nginx/html/microimpuls/smarty/manage.py clone_client --src_client_id=<source client id> --settings=settings.<settings filename>
+    smarty_manage clone_client --src_client_id=<source client id> --settings=settings.<settings filename>
 
 - *<source client id>* - ID объекта Client, который нужно склонировать в новый Client.
 - *<settings filename>* - имя файла настроек Smarty, в котором должны быть установлены параметры подключения к БД
@@ -126,7 +126,7 @@
 
 В Smarty возможно создание или восстановление пользователя через команду `create_user`: ::
 
-    python ./manage.py create_user --settings=settings.<settings filename> --username=new_user --password=new_password --is_admin=True --client_id=1 --is_superuser=True
+    smarty_manage create_user --settings=settings.<settings filename> --username=new_user --password=new_password --is_admin=True --client_id=1 --is_superuser=True
 
 Параметры:
 
@@ -329,6 +329,9 @@ TVMIDDLEWARE_STREAM_SERVICE_TOKEN_MAX_TTL ``int``
 TVMIDDLEWARE_STREAM_SERVICE_TOKEN_PROLONGATION_THRESHOLD_TTL ``int``
   Пороговое значение оставшегося времени жизни токена в секундах, после которого осуществляется продление. По умолчанию 360     (6 минут).
 
+TVMW_DONT_USE_ENDLESS_WRT ``bool``
+   При True отключается добавление флага endless=1 для приставок WRT в ссылках на видеопотоки.
+
 TVMIDDLEWARE_CLEAN_OLD_SESSIONS_DAYS ``int``
   Время жизни сессии авторизации в днях. Если сессия не была в статусе "онлайн" в течение этого периода, то она будет
   автоматически удалена.
@@ -355,6 +358,10 @@ TVMIDDLEWARE_VIDEO_EXTERNAL_API_REQUIRED ``bool``
 TVMIDDLEWARE_CUSTOMER_LOG_ENABLED ``bool``
   Включает логирование активности абонентов в БД.
   По умолчанию False.
+
+TVMIDDLEWARE_VIDEO_ACTORS_EXTENDED_UPDATE ``bool``
+  При загрузке фильмов из стороннего источника будет производиться автоматическая подгрузка дополнительной информации об актёрах.
+  По умолчанию True.
 
 TVMW_CLIENT_LOGO_MAX_HEIGHT ``int``
   Максимальная высота логотипа оператора. Загруженный логотип будет сжат до этого размера.
@@ -474,6 +481,10 @@ TVMIDDLEWARE_CINEMATE_KEY ``str``
 TVMIDDLEWARE_CACHE_EXISTING_ICONS ``bool``
   Включить кэширование данных о размерах существующих иконок. Необходимо для отправки иконок корректных размеров для устройств.
   По умнолчанию False.
+
+TVMIDDLEWARE_VODPVR_TIMEOUT_OFFSET ``int``
+  Определяет за какое времени до удаления архивной записи они должны пропасть из выдачи для клиентов в часах.
+  По умнолчанию 2 часа.
 
 DEALERS_DISPLAY_MANUAL_ACCOUNT_ACTIVATION_DATE ``bool``
   Включить/выключить возможность ручного ввода даты активации и деактивации в личном кабинете дилера.
@@ -604,7 +615,7 @@ SMARTY_DEFAULT_ICON_SIZES ``list``
   Список дополнительных размеров для иконок. Каждое значение должно быть кортежем из двух целочисленных значений.
   Максимум 3 дополнительных размера.
 
-ADS_DIRECTAD_DEVMODE ``bool``
+ADS_ADSTREAM_DEVMODE ``bool``
   Опция позволяет включить отдачу тестовых рекламных роликов от провайдера рекламы DirectAd.
   
 MAX_LA ``float``
@@ -612,6 +623,9 @@ MAX_LA ``float``
 
 MAX_USED_MEM ``float``
   Максимально значение использованной памяти, на основе которой рассчитывается нагрузка на сервер (задается в процентах).
+  
+RESERVED_SERVER_ADDRESSES ``list``
+  Cписок резервных адресов Smarty, на которые произойдет переключение, если параметры нагрузки процессора, БД и кэша превысят максимально допустимые. По умолчанию пустой.
 
 .. _license-settings:
 
@@ -698,11 +712,11 @@ MAX_USED_MEM ``float``
 
 Команда для обновления базы: ::
 
-    $ python manage.py geoip_update
+    $ smarty_manage geoip_update
 
 Создание стран и городов на основе данных django-geoip (работает только если в системе нет ни одной страны и города): ::
 
-    $ python manage.py sync_geo_geoip
+    $ smarty_manage sync_geo_geoip
 
 .. _ip2location:
 
@@ -711,13 +725,13 @@ MAX_USED_MEM ``float``
 
 Обновление базы: ::
 
-    $ python manage.py update_ip2location
+    $ smarty_manage update_ip2location
 
 Эта команда скачивает бинарную базу данных для определения местоположения и CSV-базу для создания справочника городов и стран.
 
 Создание стран и городов на основе данных ip2location (работает только если в системе нет ни одной страны и города): ::
 
-    $ python manage.py sync_geo_ip2location
+    $ smarty_manage sync_geo_ip2location
 
 
 После выбора локатора и синхронизации данных механизм геолокации готов к использованию. Доступность тех или иных
@@ -1084,6 +1098,8 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 
 Внимание, выполнение команды приведет к логауту всех устройств.
 
+.. _check_stream_services:
+
 2.5.11. Команда проверки доступности стриминг-сервисов для механизма отказоустойчивости
 ---------------------------------------------------------------------------------------
 
@@ -1094,6 +1110,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 При настройке отказоустойчивой схемы сервиса с балансировкой нагрузки рекомендуется выполнять эту команду каждую минуту.
 
 Команда проверяет сервисы по тем методам проверки, которые настроены в свойствах стриминг-сервиса.
+.. _make_autopayments:
 
 2.5.12. Команда совершения автоплатежей
 --------------------------------------------------------------------------------------
@@ -1103,21 +1120,9 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
     python manage.py make_autopayments --settings=settings.<settings name>
 
 Производит оплату для тех клиентов, у которых активен автоплатёж, будет списание средств при проверке аккаунтов сегодня и количество средств недостаточно для проделения всех аккаунтов клиента. Рекомендуется выполнять непосредственно перед вызовом check_accounts.
-.. _crontab-example:
+.. _recache_icons:
 
-2.5.13. Пример настройки crontab
---------------------------------
-
-Пример: ::
-
-    PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-    */1 * * * *         python /usr/share/nginx/html/microimpuls/smarty/manage.py cache_channel_list --settings=settings.prod
-    0 5,9,13 * * *      python /usr/share/nginx/html/microimpuls/smarty/manage.py epg_import --settings=settings.prod
-    0 3 * * *           python /usr/share/nginx/html/microimpuls/smarty/manage.py clean_old_messages --days_count 3 --settings=settings.prod
-
-.. _init-script:
-
-2.5.14. Команда кэширования существующих иконок
+2.5.13. Команда кэширования существующих иконок
 ---------------------------------------------------------------------------------------
 
 Команда: ::
@@ -1128,8 +1133,9 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 
 Команда проверяет и сохраняет в кэше существование иконок для всех EpgChannel по размерам, указанным в
 ``SMARTY_DEFAULT_ICON_SIZE`` и ``SMARTY_DEFAULT_ICON_SIZES``.
+.. _delete_old_reports:
 
-2.5.15. Очистка старых отчетов
+2.5.14. Очистка старых отчетов
 -------------------------
 
 Команда: ::
@@ -1137,6 +1143,28 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
     python /usr/share/nginx/html/microimpuls/smarty/manage.py delete_old_reports --save-days=30 --settings=settings.<settings name>
 
 В данную команду необходимо передать параметр ``--save-days`` для указания количества дней, за которое отчеты нужно сохранить.
+
+2.5.15. Очистка лога действий абонента
+--------------------------------------
+
+Команда: ::
+
+    python /usr/share/nginx/html/microimpuls/smarty/manage.py clear_customer_log --days=60 --settings=settings.<settings name>
+
+Параметр ``--days`` обязателен и определяет, что при вызове команды будут удалены записи старше ``days`` дней.
+
+.. _crontab-example:
+
+2.5.16. Пример настройки crontab
+--------------------------------
+
+Пример: ::
+
+    PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    */1 * * * *         python /usr/share/nginx/html/microimpuls/smarty/manage.py cache_channel_list --settings=settings.prod
+    0 5,9,13 * * *      python /usr/share/nginx/html/microimpuls/smarty/manage.py epg_import --settings=settings.prod
+    0 3 * * *           python /usr/share/nginx/html/microimpuls/smarty/manage.py clean_old_messages --days_count 3 --settings=settings.prod
+
 
 2.6. Запуск, перезапуск и остановка Smarty
 ==========================================
