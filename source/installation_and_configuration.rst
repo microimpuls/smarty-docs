@@ -138,6 +138,20 @@
 - `--monitoring_user` - `True` или `False`, если `True`, то пользователь будет являться оператором мониторинга устройств, по умолчанию `False`.
 - `--reset_password` - если `True`, то в случае, если указанный username уже используется, то вместо создания нового будет изменён пароль у старого пользователя; по умолчанию `False`.
 
+2.2.8. Создание Client
+----------------------
+
+В Smarty возможно создание оператора (Client) через команду `create_client`: ::
+
+    smarty_manage create_client --settings=settings.<settings filename> --name=Client_name --api_key=api_key --domain_prefix=domain_prefix --email=email@example.com
+
+Параметры:
+
+- `--name` - название оператора, обязательный.
+- `--api_key` - TVMW API Key, обязательный.
+- `--domain_prefix` - префикс домена оператора, обязательный.
+- `--email` - email оператора, обязательный.
+
 .. _install-on-centos:
 
 2.3. Установка на ОС Linux CentOS
