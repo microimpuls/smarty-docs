@@ -640,6 +640,9 @@ MAX_USED_MEM ``float``
   
 RESERVED_SERVER_ADDRESSES ``list``
   Cписок резервных адресов Smarty, на которые произойдет переключение, если параметры нагрузки процессора, БД и кэша превысят максимально допустимые. По умолчанию пустой.
+  
+BILLING_CLIENTS_EXCLUDE ``list``
+  Отключает работу check_accounts и make_autopayments для определённых client_id.
 
 .. _license-settings:
 
