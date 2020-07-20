@@ -973,7 +973,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 
 Команда: ::
 
-    python /usr/share/nginx/html/microimpuls/smarty/manage.py cache_channel_list --settings=settings.<settings name>
+    smarty_manage cache_channel_list --settings=settings.<settings name>
 
 Рекомендуется запускать эту команду каждую минуту. При пустом кеше списка телеканалов абоненту будет выдаваться сообщение,
 что список телеканалов пуст.
@@ -985,7 +985,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 
 Команда: ::
 
-    python /usr/share/nginx/html/microimpuls/smarty/manage.py epg_channel_import --settings=settings.<settings name>
+    smarty_manage epg_channel_import --settings=settings.<settings name>
 
 Данная команда поможет загрузить все каналы или обновить иконки из определенного источника. Для запуска обязательно
 необходимо указать ``epg_source_id`` или ``--epg_source_name``.
@@ -1020,7 +1020,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 
 Пример команды для повторного импортирования иконок для одного канала:
 
-    python /usr/share/nginx/html/microimpuls/smarty/manage.py epg_channel_import --epg_source_id=1 --epg_channel_id=100 --reimport_icons --settings=settings.<settings name>
+    smarty_manage epg_channel_import --epg_source_id=1 --epg_channel_id=100 --reimport_icons --settings=settings.<settings name>
 
 .. _epg-import-command:
 
@@ -1029,7 +1029,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 
 Команда: ::
 
-    python /usr/share/nginx/html/microimpuls/smarty/manage.py epg_import --settings=settings.<settings name>
+    smarty_manage epg_import --settings=settings.<settings name>
 
 Рекомендуется запускать импорт несколько раз в день для поддержания актуальности телепрограммы
 (см. :ref:`Настройка EPG и телеканалов <epg-setup>`).
@@ -1053,7 +1053,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 
 Команда: ::
 
-    python /usr/share/nginx/html/microimpuls/smarty/manage.py epg_premiere_import --settings=settings.<settings name>
+    smarty_manage epg_premiere_import --settings=settings.<settings name>
 
 Рекомендуется запускать 1-2 раза в день для поддержки актуальности списка премьер
 (см. :ref:`Настройка EPG и телеканалов <epg-setup>`).
@@ -1068,7 +1068,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 
 Команда: ::
 
-    python /usr/share/nginx/html/microimpuls/smarty/manage.py check_accounts --settings=settings.<settings name>
+    smarty_manage check_accounts --settings=settings.<settings name>
 
 Команда осуществляет деактивацию аккаунтов, для которых подошел к концу расчетный период, а также производит списание средств
 и продление действующих аккаунтов. Рекомендуется запускать каждую ночь (см. :ref:`Описание встроенного биллинга <builtin-billing>`).
@@ -1080,7 +1080,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 
 Команда: ::
 
-    python /usr/share/nginx/html/microimpuls/smarty/manage.py check_streams --settings=settings.<settings name>
+    smarty_manage check_streams --settings=settings.<settings name>
 
 Рекомендуется запускать каждые 1-5 минут для актуального состояния данных.
 
@@ -1091,7 +1091,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 
 Команда: ::
 
-    python /usr/share/nginx/html/microimpuls/smarty/manage.py send_activation_expires_messages --days_count <количество оставшихся дней> --settings=settings.<settings name>
+    smarty_manage send_activation_expires_messages --days_count <количество оставшихся дней> --settings=settings.<settings name>
 
 Рекомендуется запускать каждый вечер.
 
@@ -1102,7 +1102,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 
 Команда: ::
 
-    python /usr/share/nginx/html/microimpuls/smarty/manage.py clean_old_messages --days_count 3 --settings=settings.<settings name>
+    smarty_manage clean_old_messages --days_count 3 --settings=settings.<settings name>
 
 .. _resend-sms-command:
 
@@ -1111,7 +1111,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 
 Команда: ::
 
-    python /usr/share/nginx/html/microimpuls/smarty/manage.py resend_sms --settings=settings.<settings name>
+    smarty_manage resend_sms --settings=settings.<settings name>
 
 Рекомендуется запускать каждые 1-3 минуты.
 
@@ -1122,7 +1122,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 
 Команда: ::
 
-    python manage.py delete_authkeys --client_id=<client_id> --settings=settings.<settings name>
+    smarty_manage delete_authkeys --client_id=<client_id> --settings=settings.<settings name>
 
 Внимание, выполнение команды приведет к логауту всех устройств.
 
@@ -1145,17 +1145,32 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 
 Команда: ::
 
-    python manage.py make_autopayments --settings=settings.<settings name>
+    smarty_manage make_autopayments --settings=settings.<settings name>
 
 Производит оплату для тех клиентов, у которых активен автоплатёж, будет списание средств при проверке аккаунтов сегодня и количество средств недостаточно для проделения всех аккаунтов клиента. Рекомендуется выполнять непосредственно перед вызовом check_accounts.
+
+При указании параметра --use_pool обработка клиентов будет производиться в многопоточном режиме.
+
+.. _migrate_to_nb:
+2.5.13. Команда миграции клиента на подписочную модель
+--------------------------------------------------------------------------------------
+
+Команда: ::
+
+    smarty_manage migrate_to_nb --client_id=<client_id> --settings=settings.<settings name>
+
+Мигрирует клиента на подписочную модель тарифов. Создаёт для каждого пользователя и аккаунта подписки на каждый подключенный тариф.
+
+**Изменения, сделанные данной командой являются необратимыми, рекомендуется сделать резервную копию БД перед применением. Ни в коем случае не использовать без необхомости.**
+
 .. _recache_icons:
 
-2.5.13. Команда кэширования существующих иконок
+2.5.14. Команда кэширования существующих иконок
 ---------------------------------------------------------------------------------------
 
 Команда: ::
 
-    python manage.py recache_icons --settings=settings.<settings name>
+    smarty_manage recache_icons --settings=settings.<settings name>
 
 Вызывается в случае отсутствия информации о существующих иконках.
 
@@ -1163,7 +1178,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 ``SMARTY_DEFAULT_ICON_SIZE`` и ``SMARTY_DEFAULT_ICON_SIZES``.
 .. _delete_old_reports:
 
-2.5.14. Очистка старых отчетов
+2.5.15. Очистка старых отчетов
 -------------------------
 
 Команда: ::
@@ -1172,7 +1187,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 
 В данную команду необходимо передать параметр ``--save-days`` для указания количества дней, за которое отчеты нужно сохранить.
 
-2.5.15. Очистка лога действий абонента
+2.5.16. Очистка лога действий абонента
 --------------------------------------
 
 Команда: ::
@@ -1183,7 +1198,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 
 .. _crontab-example:
 
-2.5.16. Пример настройки crontab
+2.5.17. Пример настройки crontab
 --------------------------------
 
 Пример: ::
