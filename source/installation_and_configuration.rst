@@ -342,6 +342,11 @@ TVMIDDLEWARE_STREAM_SERVICE_TOKEN_MAX_TTL ``int``
   
 TVMIDDLEWARE_STREAM_SERVICE_TOKEN_PROLONGATION_THRESHOLD_TTL ``int``
   Пороговое значение оставшегося времени жизни токена в секундах, после которого осуществляется продление. По умолчанию 360     (6 минут).
+  
+TVMIDDLEWARE_STREAM_SERVICE_AUTH_DURATION ``int``
+  Временной интервал, по истечении которого происходит перепроверка токена во Flussonic. 
+  Указывается в секундах. 
+  По умолчанию 3 минуты (180 секунд).
 
 TVMW_DONT_USE_ENDLESS_WRT ``bool``
    При True отключается добавление флага endless=1 для приставок WRT в ссылках на видеопотоки.
