@@ -348,6 +348,9 @@ TVMIDDLEWARE_STREAM_SERVICE_AUTH_DURATION ``int``
   Указывается в секундах. 
   По умолчанию 3 минуты (180 секунд).
 
+TVMIDDLEWARE_DISABLE_PAGINATION ``bool``
+  Отключает подсчёт количества объектов при пагинации в некоторых списках в админке.
+
 TVMW_DONT_USE_ENDLESS_WRT ``bool``
    При True отключается добавление флага endless=1 для приставок WRT в ссылках на видеопотоки.
 
