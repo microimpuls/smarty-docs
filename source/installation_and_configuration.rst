@@ -1181,6 +1181,8 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 ``SMARTY_DEFAULT_ICON_SIZE`` и ``SMARTY_DEFAULT_ICON_SIZES``.
 .. _delete_old_reports:
 
+.. _delete_old_reports:
+
 2.5.15. Очистка старых отчетов
 -------------------------
 
@@ -1189,6 +1191,8 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
     python /usr/share/nginx/html/microimpuls/smarty/manage.py delete_old_reports --save-days=30 --settings=settings.<settings name>
 
 В данную команду необходимо передать параметр ``--save-days`` для указания количества дней, за которое отчеты нужно сохранить.
+
+.. _clear_customer_log:
 
 2.5.16. Очистка лога действий абонента
 --------------------------------------
@@ -1199,9 +1203,29 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 
 Параметр ``--days`` обязателен и определяет, что при вызове команды будут удалены записи старше ``days`` дней.
 
+.. _cache_max_online:
+
+2.5.17. Сохранение максимального числа абонентов онлайн для статистики
+
+Команда: ::
+
+    smarty_manage cache_max_online --settings=settings.<settings name>
+    
+Можно запускать с любой регулярностью, но не реже раз в сутки.
+    
+.. _save_stats:
+
+2.5.18. Сбор и хранение статистики по каждому клиенту
+
+Команда: ::
+
+    smarty_manage save_stats --settings=settings.<settings name>
+ 
+ Необходимо запускать раз в сутки.
+
 .. _crontab-example:
 
-2.5.17. Пример настройки crontab
+2.5.19. Пример настройки crontab
 --------------------------------
 
 Пример: ::
