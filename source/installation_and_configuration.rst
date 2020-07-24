@@ -1245,6 +1245,16 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
     0 5,9,13 * * *      python /usr/share/nginx/html/microimpuls/smarty/manage.py epg_import --settings=settings.prod
     0 3 * * *           python /usr/share/nginx/html/microimpuls/smarty/manage.py clean_old_messages --days_count 3 --settings=settings.prod
 
+.. make_vodpvr:
+
+2.5.20. Команда генерации видео для архивных записей
+----------------------------------------------------
+
+Команда: ::
+
+    smarty_manage make_vodpvr --client_id=<client_id> --settings=settings.<settings name>
+
+Выполняет создание видео для каждой программы, если для нее существует канал ведущий архивную запись. Отличается от контента
 
 2.6. Запуск, перезапуск и остановка Smarty
 ==========================================
