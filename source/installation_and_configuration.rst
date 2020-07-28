@@ -737,11 +737,11 @@ BILLING_CLIENTS_EXCLUDE ``list``
 
 Команда для обновления базы: ::
 
-    $ smarty_manage geoip_update
+    $ smarty_manage geoip_update --settings=settings.<settings name>
 
 Создание стран и городов на основе данных django-geoip (работает только если в системе нет ни одной страны и города): ::
 
-    $ smarty_manage sync_geo_geoip
+    $ smarty_manage sync_geo_geoip --settings=settings.<settings name>
 
 .. _ip2location:
 
@@ -750,13 +750,13 @@ BILLING_CLIENTS_EXCLUDE ``list``
 
 Обновление базы: ::
 
-    $ smarty_manage update_ip2location
+    $ smarty_manage update_ip2location --settings=settings.<settings name>
 
 Эта команда скачивает бинарную базу данных для определения местоположения и CSV-базу для создания справочника городов и стран.
 
 Создание стран и городов на основе данных ip2location (работает только если в системе нет ни одной страны и города): ::
 
-    $ smarty_manage sync_geo_ip2location
+    $ smarty_manage sync_geo_ip2location --settings=settings.<settings name>
 
 
 После выбора локатора и синхронизации данных механизм геолокации готов к использованию. Доступность тех или иных
