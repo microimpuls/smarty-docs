@@ -1004,6 +1004,7 @@ http://smarty.example.com/admin/users/user/.
 * Мониторинг устройств (продукт Mvision)
 
 Каждый тип мониторинга имеет свои ключи для настройки триггеров:
+
 * Ключи для мониторинга Multicast:
     * Число ошибок CC
     * Число ошибок PES
@@ -1025,9 +1026,8 @@ http://smarty.example.com/admin/users/user/.
 
 Для оповещения о созданной аварии необходимо настроить текст сообщения уведомления и получателей.
 
-..note
-
-Внимание! Для корректной работы уведомлений необходимо корректно настроить SMTP-сервер: поля файла конфигурации EMAIL_HOST, EMAIL_PORT, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_USE_TLS, DEFAULT_FROM_EMAIL.
+.. note::
+    Внимание! Для корректной работы уведомлений необходимо корректно настроить SMTP-сервер: поля файла конфигурации EMAIL_HOST, EMAIL_PORT, EMAIL_HOST_USER,    EMAIL_HOST_PASSWORD, EMAIL_USE_TLS, DEFAULT_FROM_EMAIL.
 
 .. _billing-general-points:
 
