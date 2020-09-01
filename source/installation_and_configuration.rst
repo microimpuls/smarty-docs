@@ -737,11 +737,11 @@ BILLING_CLIENTS_EXCLUDE ``list``
 
 Команда для обновления базы: ::
 
-    $ smarty_manage geoip_update
+    $ smarty_manage geoip_update --settings=settings.<settings name>
 
 Создание стран и городов на основе данных django-geoip (работает только если в системе нет ни одной страны и города): ::
 
-    $ smarty_manage sync_geo_geoip
+    $ smarty_manage sync_geo_geoip --settings=settings.<settings name>
 
 .. _ip2location:
 
@@ -750,13 +750,13 @@ BILLING_CLIENTS_EXCLUDE ``list``
 
 Обновление базы: ::
 
-    $ smarty_manage update_ip2location
+    $ smarty_manage update_ip2location --settings=settings.<settings name>
 
 Эта команда скачивает бинарную базу данных для определения местоположения и CSV-базу для создания справочника городов и стран.
 
 Создание стран и городов на основе данных ip2location (работает только если в системе нет ни одной страны и города): ::
 
-    $ smarty_manage sync_geo_ip2location
+    $ smarty_manage sync_geo_ip2location --settings=settings.<settings name>
 
 
 После выбора локатора и синхронизации данных механизм геолокации готов к использованию. Доступность тех или иных
@@ -827,7 +827,11 @@ MONGODB_AUTH_METHOD ``str``
 2.4.8. Настройка модуля сбора статистики по абонентам
 -----------------------------------------------------
 
-Для отображения информации внутри вкладки "Динамика абонентов" в секции **INSTALLED_APPS** в файле конфигурации Smarty необходимо добавить модуль ``smartystats``.
+Для отображения информации внутри вкладки "Динамика абонентов" в секции **INSTALLED_APPS** в файле конфигурации Smarty необходимо добавить модуль ``smartystats`` и ``viewstats``.
+
+.. note::
+    
+    После добавления модулей необходимо установить все недостающие миграции.
 
 Помимо этого необходимо настроить корректную работу management-команд cache_max_online и save_stats.
 
