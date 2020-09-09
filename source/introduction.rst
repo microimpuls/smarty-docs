@@ -4,14 +4,14 @@
 1. Описание системы IPTV/OTT Middleware Smarty
 **********************************************
 
-Актуальное описание системы см. в новой базе знаний по продукту на сайте: https://microimpuls.com/docs/smarty/about
+Актуальное описание системы в новой базе знаний по продукту на сайте: https://microimpuls.com/docs/smarty/about
 
 .. _smarty-architecture:
 
 1.1. Архитектура системы
 ========================
 
-Актуальное описание архитектуры системы см. в новой базе знаний по продукту на сайте: https://microimpuls.com/docs/smarty/about
+Актуальное описание архитектуры системы в новой базе знаний по продукту на сайте: https://microimpuls.com/docs/smarty/about
 
 .. _system-requirements:
 
