@@ -4,21 +4,7 @@
 5. Интеграция Smarty с внешними системами и сервисами
 *****************************************************
 
-.. _tvmiddleware-api:
-
-5.1. Взаимодействие с абонентскими устройствами
-===============================================
-
-`Документация по TVMiddleware API <https://microimpuls.github.io/smarty-tvmw-api-docs>`_
-
-.. _billing-api:
-
-5.2. Интеграция с биллингом
-===========================
-
-`Документация по Billing API <https://microimpuls.github.io/smarty-billing-api-docs>`_
-
-.. _billing-api-samples:
+Актуальная документация по API-методам в базе знаний продукта на сайте: https://microimpuls.com/docs/smarty/extra/api
 
 5.2.1. Примеры кода
 -------------------
