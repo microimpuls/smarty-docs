@@ -1034,4 +1034,4 @@ http://smarty.example.com/admin/users/user/.
 3.3. Общие особенности работы с услугами и аккаунтами в Smarty
 ==============================================================
 
-Актуальная информация об особенностях работы встроенного биллинга в Smarty в базе знаний продукта на сайте https://microimpuls.com/docs/smarty/admin-guide/about-internal-billing
+Актуальная информация об особенностях работы встроенного биллинга в Smarty в базе знаний продукта на сайте https://microimpuls.com/docs/smarty/external-billing-integration/about-internal-billing
