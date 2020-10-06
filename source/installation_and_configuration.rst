@@ -215,20 +215,7 @@ SECRET_KEY ``str``
 INSTALLED_APPS ``list``
   Список установленных модулей. Список дополняет базовые модули, прописанные в ``base.py``, через операцию ``+=``.
 
-EMAIL_HOST ``str``
-  Адрес smtp-сервера.
-
-EMAIL_PORT ``int``
-  Порт smtp-сервера.
-
-EMAIL_HOST_USER ``str``
-  Имя пользователя для авторизации на smtp-сервере.
-
-EMAIL_HOST_PASSWORD ``str``
-  Пароль для авторизации на smtp-сервере.
-
-EMAIL_USE_TLS ``bool``
-  Включает использование защищенного протокола TLS при отправке писем.
+Актуальная документация по настройке отправки Email: https://microimpuls.com/docs/smarty/configuring-and-management/email
 
 DEFAULT_FROM_EMAIL ``str``
   Отображаемый адрес "От" в отправляемых служебных email по умолчанию.
@@ -769,24 +756,7 @@ BILLING_CLIENTS_EXCLUDE ``list``
 2.4.6. Настройка модуля мониторинга видеопотоков
 ------------------------------------------------
 
-Настройки задаются переменными в файле конфигурации Smarty.
-
-MONITORING_CONCURRENT_STREAMS_COUNT ``int``
-  Количество одновременно опрашиваемых потоков с анализаторов MicroTS.
-  Данный параметр влияет на производительность и быстроту обновления данных на странице мониторинга потоков.
-
-MONITORING_AGENT_SOCKET_TCP_BUFFER ``int``
-  Размер буфера данных при приеме ответа от анализатора MicroTS. Значение по умолчанию 4096 байт.
-
-MONITORING_STREAM_CHECKS_TTL_DAYS ``int``
-  Период жизни проб и событий потока.
-
-MONITORING_STREAM_TEST_DURATION ``int``
-  Длительность ожидания отдельного потока с анализаторов MicroTS.
-  Данный параметр влияет на производительность и быстроту обновления данных на странице мониторинга потоков.
-  Значение по умолчанию 10
-
-Скрипт опроса анализаторов запускается через crontab - см. :ref:`Настройка планировщика задач crontab <crontab-settings>`.
+Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/monitoring-and-alarming
 
 .. _reports-settings:
 
@@ -841,41 +811,7 @@ MONGODB_AUTH_METHOD ``str``
 2.4.9. Настройка модуля мониторинга устройств
 ---------------------------------------------
 
-Для сохранения данных метрик и системной информации устройств абонентов используется сервер **MongoDB**.
-
-.. note::
-
-    Минимальная версия MongoDB необходимая для работы - 3.4
-
-Настройки задаются переменными в файле конфигурации Smarty.
-
-
-DEVMON_SINGLE_CLIENT ``bool``
-  Включить режим единого доступа мониторинга устройств. Обеспечивает одинаковый доступ как к функционалу, так и ко всей базе мониторинга устройств для всех клиентов.
-
-.. note::
-
-  В режиме единого доступа разные клиенты могут иметь доступ к устройствам, которые этим клиентам не принадлежат.
-
-MONGODB_MONITORING_HOST ``str``
-  Адрес сервера MongoDB.
-
-MONGODB_MONITORING_PORT ``int``
-  Порт сервера MongoDB.
-
-MONGODB_MONITORING_NAME ``str``
-  Название базы данных.
-
-MONGODB_MONITORING_USERNAME ``str``
-  Имя пользователя для авторизации.
-
-MONGODB_MONITORING_PASSWORD ``str``
-  Пароль для авторизации.
-
-MONGODB_MONITORING_AUTH_METHOD ``str``
-  Метод авторизации. Метод авторизации зависит от версии **MongoDB**.
-
-В секции **INSTALLED_APPS** в файле конфигурации Smarty необходимо добавить модуль ``device_monitoring``.
+Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/monitoring-and-alarming
 
 .. _sms-settings:
 
@@ -1095,11 +1031,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 2.5.6. Опрос анализаторов TS-потоков MicroTS (модуль мониторинга видеопотоков)
 ------------------------------------------------------------------------------
 
-Команда: ::
-
-    smarty_manage check_streams --settings=settings.<settings name>
-
-Рекомендуется запускать каждые 1-5 минут для актуального состояния данных.
+Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands#check_streams
 
 .. _send-activation-expires-messages-command:
 
