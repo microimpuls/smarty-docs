@@ -531,6 +531,14 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 --force_import
     Загрузка всех каналов из источника. Если указан данный аргумент то все аргументы кроме ``epg_source_id`` и
     ``epg_source_name`` будут проигнорированы.
+    
+--force_parser_handling
+    Принудительно разрешает использовать передачу управления парсеру (равносильно ``TVMW_EPG_IMPORT_ALLOW_PARSER_HANDLING=True``)
+    
+--force_disable_parser_handling
+    Принудительно запрещает использовать передачу управления парсеру (равносильно ``TVMW_EPG_IMPORT_ALLOW_PARSER_HANDLING=False``)
+    
+Использование опций --force_parser_handling и --force_disable_parser_handling приоритетнее параметра TVMW_EPG_IMPORT_ALLOW_PARSER_HANDLING.
 
 Пример команды для повторного импортирования иконок для одного канала:
 
