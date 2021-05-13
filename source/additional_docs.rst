@@ -59,3 +59,23 @@ B.1.1. Настройка подключения Smarty к Oracle
         }
     }
 
+.. _smarty_postgre_connection_settings:
+
+B.2. Настройка подключения Smarty к PostgreSQL
+----------------------------------------------
+
+В файл конфигурации Smarty в секции настроек подключения к БД необходимо прописать: ::
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'smarty',
+        'HOST': 'localhost',
+    }
+}
+
+Параметр Host является обязательным.
+Также для PostgreSQL появляется новая зависимость: psycopg2. Устанавливается через pip: ::
+
+pip install psycopg2-binary
+
