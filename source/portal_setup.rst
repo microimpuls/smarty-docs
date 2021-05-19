@@ -293,6 +293,23 @@ Smarty позволяет для каждого устройства задат�
     div#main-menu-selection {
         background: transparent url('example-selection-bg.png') no-repeat center 0px;
     }
+    
+    /* Установка кастомного шрифта */
+    
+    @font-face {
+        font-family: 'Nunito';
+        src: url('../fonts/Nunito/nunito-v12-latin_cyrillic.eot');
+        src: url('../fonts/Nunito/nunito-v12-latin_cyrillic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Nunito/nunito-v12-latin_cyrillic.woff2') format('woff2'),
+        url('../fonts/Nunito/nunito-v12-latin_cyrillic.woff') format('woff'),
+        url('../fonts/Nunito/nunito-v12-latin_cyrillic.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    
+    body {
+        font-family: "Nunito", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    }
 
 Пример внешнего css-файла для кастомизации шаблона ``impuls``. ::
 
