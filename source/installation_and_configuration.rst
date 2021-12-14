@@ -419,7 +419,20 @@ MOBIPACE_PASSWORD ``str``
   Пароль в сервисе mobipace.
 
 MOBIPACE_SENDER ``str``
-  Имя отправителя для СМС-сообщений.
+  Имя отправителя, которое будет отображаться в SMS, отправленных через сервис mobipace.com
+  
+.. _pulseem:
+
+2.4.10.2. Шлюз pulseem.co.il
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Значение для **SMS_BACKEND** = ``'sms.backends.pulseem.PulseemBackend'``
+  
+PULSEEM_APIKEY ``str``
+``str``Ключ API Pulseem
+  
+PULSEEM_SENDER_NAME ``str``
+  Имя отправителя, которое будет отображаться в SMS, отправленных через сервис pulseem.co.il
 
 .. _sentry-settings:
 
