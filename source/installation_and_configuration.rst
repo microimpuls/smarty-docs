@@ -429,7 +429,7 @@ MOBIPACE_SENDER ``str``
 Значение для **SMS_BACKEND** = ``'sms.backends.pulseem.PulseemBackend'``
   
 PULSEEM_APIKEY ``str``
-``str``Ключ API Pulseem
+  Ключ API Pulseem
   
 PULSEEM_SENDER_NAME ``str``
   Имя отправителя, которое будет отображаться в SMS, отправленных через сервис pulseem.co.il
