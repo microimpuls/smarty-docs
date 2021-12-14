@@ -423,7 +423,7 @@ MOBIPACE_SENDER ``str``
   
 .. _pulseem:
 
-2.4.10.2. Шлюз pulseem.co.il
+2.4.10.3. Шлюз pulseem.co.il
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Значение для **SMS_BACKEND** = ``'sms.backends.pulseem.PulseemBackend'``
