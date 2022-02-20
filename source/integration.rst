@@ -97,7 +97,7 @@
 
 Для корректной работы функционала постановки Live-трансляций на паузу и перемотки назад из Live необходимо использовать следующий шаблон URL: ::
 
-http://<host>/$cid/video-$flpbt-$flpdur.m3u8?token=$token
+  http://<host>/$cid/video-$flpbt-$flpdur.m3u8?token=$token
 
 .. note::
 
