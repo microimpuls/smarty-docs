@@ -846,6 +846,7 @@ http://smarty.example.com/admin/users/user/.
             * city__NUM__name: название города
             * city__NUM__id: идентификатор города в источнике, заданном в конфиге Smarty
             * auto_detect_current_city: флаг, при передаче которого город по-умолчанию для виджета будет определяться по геолокации, принимает значения 0 или 1
+            * show_current_city_name: флаг, при передаче которого в виджете будет отображено название текущего выбранного города
     * Курс валют
        * Системное название: ExchangeWidget
        * url: /templates/futuristic/default/apps/exchange-widget/exchange.widget.js
