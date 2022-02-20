@@ -630,7 +630,9 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 
 Команда: ::
 
-    smarty_manage send_activation_expires_messages --days_count <количество оставшихся дней> --settings=settings.<settings name>
+    smarty_manage send_activation_expires_messages --client_id=<client_id> --days_count=<количество оставшихся дней> --settings=settings.<settings name>
+    
+При указании параметра ``--send_sms`` сообщения также будут рассылаться с помощью sms в случае, если у абонента указан номер телефона.
 
 Рекомендуется запускать каждый вечер.
 
