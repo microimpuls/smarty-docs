@@ -433,6 +433,22 @@ PULSEEM_APIKEY ``str``
   
 PULSEEM_SENDER_NAME ``str``
   Имя отправителя, которое будет отображаться в SMS, отправленных через сервис pulseem.co.il
+  
+.. _sms-assistent:
+
+2.4.10.3. Шлюз sms-assistent.by
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Значение для **SMS_BACKEND** = ``'sms.backends.sms-assistent.SmsAssistentBackend'``
+  
+SMS_ASSIST_USERNAME ``str``
+  Имя пользователя в админке sms-assistent.by
+    
+SMS_ASSIST_PASSWORD ``str``
+  Пароль от админки sms-assistent.by
+  
+SMS_ASSIST_SENDER_NAME ``str``
+  Имя отправителя, которое будет отображаться в SMS, отправленных через сервис sms-assistent
 
 .. _sentry-settings:
 
