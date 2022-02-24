@@ -324,47 +324,14 @@ https://microimpuls.com/docs/smarty/configuring-and-management/logging
 2.4.7. Настройка модуля статистики и отчетов
 --------------------------------------------
 
-Для сохранения данных телесмотрения абонентов используется сервер **MongoDB**.
-
-.. note::
-
-    Минимальная версия MongoDB необходимая для работы - 3.4
-
-Настройки задаются переменными в файле конфигурации Smarty.
-
-
-MONGODB_HOST ``str``
-  Адрес сервера MongoDB.
-
-MONGODB_PORT ``int``
-  Порт сервера MongoDB.
-
-MONGODB_NAME ``str``
-  Название базы данных.
-
-MONGODB_USERNAME ``str``
-  Имя пользователя для авторизации.
-
-MONGODB_PASSWORD ``str``
-  Пароль для авторизации.
-
-MONGODB_AUTH_METHOD ``str``
-  Метод авторизации. Метод авторизации зависит от версии **MongoDB**.
-
-В секции **INSTALLED_APPS** в файле конфигурации Smarty необходимо добавить модуль ``viewstats``.
+См. https://micro.im/docs/smarty/configuring-and-management/viewstats
 
 .. _smartystats-settings:
 
 2.4.8. Настройка модуля сбора статистики по абонентам
 -----------------------------------------------------
 
-Для отображения информации внутри вкладки "Динамика абонентов" в секции **INSTALLED_APPS** в файле конфигурации Smarty необходимо добавить модуль ``smartystats`` и ``viewstats``.
-
-.. note::
-    
-    После добавления модулей необходимо установить все недостающие миграции.
-
-Помимо этого необходимо настроить корректную работу management-команд cache_max_online и save_stats.
+См. https://micro.im/docs/smarty/configuring-and-management/viewstats
 
 
 .. _devicemonitoring-settings:
