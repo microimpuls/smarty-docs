@@ -878,6 +878,8 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 Миграция схемы БД осуществляется командой: ::
 
     python /usr/share/nginx/html/microimpuls/smarty/manage.py migrate --settings=settings.<settings filename>
+    
+Если в процессе установки пакета будет предложено заменить файл ``base.py`` - необходимо ответить Y (заменить файл).    
 
 После установки всех обновлений и миграции схем БД необходимо перезапустить сервер приложений uwsgi, завершить все команды
 *epg_import* и *cache_channel_list* (через вызов *kill*), а затем выполнить команду обновления кеша: ::
