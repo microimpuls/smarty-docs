@@ -278,7 +278,7 @@ https://microimpuls.com/docs/smarty/configuring-and-management/logging
 
 .. _django-geoip:
 
-2.4.5.1. Локатор django-geoip (ipgeobase) - DEPRECATED
+2.4.5.1. Локатор django-geoip (ipgeobase)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Представляет собой обёртку над https://django-geoip.readthedocs.org/en/latest/
