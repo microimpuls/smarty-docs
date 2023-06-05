@@ -550,33 +550,21 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 2.5.7. Рассылка информационных сообщений на экраны устройств и email о приближении срока деактивации/необходимости оплаты
 -------------------------------------------------------------------------------------------------------------------------
 
-Команда: ::
-
-    smarty_manage send_activation_expires_messages --client_id=<client_id> --days_count=<количество оставшихся дней> --settings=settings.<settings name>
-    
-При указании параметра ``--send_sms`` сообщения также будут рассылаться с помощью sms в случае, если у абонента указан номер телефона.
-
-Рекомендуется запускать каждый вечер.
+Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
 
 .. _clean-old-messages-command:
 
 2.5.8. Очистка старых недоставленных информационных сообщений
 -------------------------------------------------------------
 
-Команда: ::
-
-    smarty_manage clean_old_messages --days_count 3 --settings=settings.<settings name>
+Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
 
 .. _resend-sms-command:
 
 2.5.9. Повторная отправка SMS-сообщений, недоставленных с первого раза
 ----------------------------------------------------------------------
 
-Команда: ::
-
-    smarty_manage resend_sms --settings=settings.<settings name>
-
-Рекомендуется запускать каждые 1-3 минуты.
+Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
 
 .. _delete-authkeys:
 
@@ -618,13 +606,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 2.5.13. Команда миграции клиента на подписочную модель
 --------------------------------------------------------------------------------------
 
-Команда: ::
-
-    smarty_manage migrate_to_nb --client_id=<client_id> --settings=settings.<settings name>
-
-Мигрирует клиента на подписочную модель тарифов. Создаёт для каждого пользователя и аккаунта подписки на каждый подключенный тариф.
-
-**Изменения, сделанные данной командой являются необратимыми, рекомендуется сделать резервную копию БД перед применением. Ни в коем случае не использовать без необхомости.**
+Актуальная документация: https://microimpuls.com/docs/smarty/external-billing-integration/billing_subscription_type
 
 .. _recache_icons:
 
