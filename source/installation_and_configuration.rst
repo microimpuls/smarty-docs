@@ -418,12 +418,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 2.5.1. Кеширование списка телеканалов для абонентских устройств
 ---------------------------------------------------------------
 
-Команда: ::
-
-    smarty_manage cache_channel_list --settings=settings.<settings name>
-
-Рекомендуется запускать эту команду каждую минуту. При пустом кеше списка телеканалов абоненту будет выдаваться сообщение,
-что список телеканалов пуст.
+Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
 
 .. _epgchannel-import-command:
 
@@ -571,24 +566,14 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 2.5.10. Команда удаления всех сессий авторизации всех аккаунтов для заданного Client ID
 --------------------------------------------------------------------------------------
 
-Команда: ::
-
-    smarty_manage delete_authkeys --client_id=<client_id> --settings=settings.<settings name>
-
-Внимание, выполнение команды приведет к логауту всех устройств.
+Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
 
 .. _check_stream_services:
 
 2.5.11. Команда проверки доступности стриминг-сервисов для механизма отказоустойчивости
 ---------------------------------------------------------------------------------------
 
-Команда: ::
-
-    python manage.py check_stream_services --settings=settings.<settings name>
-
-При настройке отказоустойчивой схемы сервиса с балансировкой нагрузки рекомендуется выполнять эту команду каждую минуту.
-
-Команда проверяет сервисы по тем методам проверки, которые настроены в свойствах стриминг-сервиса.
+Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
 
 .. _make_autopayments:
 
@@ -628,44 +613,28 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 2.5.15. Очистка старых отчетов
 -------------------------
 
-Команда: ::
-
-    python /usr/share/nginx/html/microimpuls/smarty/manage.py delete_old_reports --save-days=30 --settings=settings.<settings name>
-
-В данную команду необходимо передать параметр ``--save-days`` для указания количества дней, за которое отчеты нужно сохранить.
+Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
 
 .. _clear_customer_log:
 
 2.5.16. Очистка лога действий абонента
 --------------------------------------
 
-Команда: ::
-
-    python /usr/share/nginx/html/microimpuls/smarty/manage.py clear_customer_log --days=60 --settings=settings.<settings name>
-
-Параметр ``--days`` обязателен и определяет, что при вызове команды будут удалены записи старше ``days`` дней.
+Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
 
 .. _cache_max_online:
 
 2.5.17. Сохранение максимального числа абонентов онлайн для статистики
 ----------------------------------------------------------------------
 
-Команда: ::
-
-    smarty_manage cache_max_online --settings=settings.<settings name>
-    
-Можно запускать с любой регулярностью, но не реже раз в сутки.
+Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
     
 .. _save_stats:
 
 2.5.18. Сбор и хранение статистики по каждому клиенту
 -----------------------------------------------------
 
-Команда: ::
-
-    smarty_manage save_stats --settings=settings.<settings name>
- 
- Необходимо запускать раз в сутки.
+Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
 
 .. _crontab-example:
 
@@ -695,11 +664,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 2.5.21. Команда сбора дополнительной статистики для отчета по количеству пользователей
 --------------------------------------------------------------------------------------
 
-Команда: ::
-
-    smarty_manage collect_daily_stats --settings=settings.<settings name>
-    
-Необходимо выполнять каждый день в начале дня (время записи сохраняется в UTC+0).
+Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
 
 .. check_payment_status:
 
@@ -721,18 +686,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 2.5.23. Команда кеширования данных для графиков "Динамики абонентов"
 --------------------------------------------------------------------
 
-Команда: ::
-
-    smarty_manage cache_customers_dynamic --settings=settings.<settings name>
-    
-Параметры:
-
-``--client_id`` -- список идентификаторов клиентов, через запятую, для которых нужно провести кеширование. Если в аргумент ничего не передано, то кешируются данные для всех клиентов.
-    
-* Команду рекомендуется запускать раз в час.
-* Для небольших баз графики будут работать быстро и корректно и без данной команды.
-* При первом запуске команда может выполняться долго (зависит от количества аккаунтов, транзакций и тарифов) из-за того, что будут рассчитываться данные за весь прошлый месяц. При повторном запуске будут рассчитываться данные только за последний день или час (уже кешированные данные повторно не кешируются).
-* Поскольку команда может выполняться долго рекомендуется сначала попробовать для одного клиента (аргумент --client_id).
+Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
 
 .. remove_viewed_content_history:
 
@@ -746,15 +700,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 2.5.25. Команда очистки статистических данных в Smarty
 ------------------------------------------------------
 
-Команда: ::
-
-    smarty_manage reports_remove_old_data --settings=settings.<settings name>
-    
-Параметры:
-
-``--days`` - данные, старше данного количества дней, следует очищать.
-
-Команда позволяет удалить статистические данные, используемые для посмотрения графиков, старше какого-то количества дней, чтобы не хранить данные, например, годичной давности.
+Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
 
 
 2.6. Запуск, перезапуск и остановка Smarty
