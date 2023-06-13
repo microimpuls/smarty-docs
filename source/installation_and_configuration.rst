@@ -575,13 +575,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 2.5.12. Команда совершения автоплатежей
 --------------------------------------------------------------------------------------
 
-Команда: ::
-
-    smarty_manage make_autopayments --settings=settings.<settings name>
-
-Производит оплату для тех клиентов, у которых активен автоплатёж, будет списание средств при проверке аккаунтов сегодня и количество средств недостаточно для проделения всех аккаунтов клиента. Рекомендуется выполнять непосредственно перед вызовом check_accounts.
-
-При указании параметра ``--use_pool`` обработка клиентов будет производиться в многопоточном режиме.
+Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
 
 .. _migrate_to_nb:
 2.5.13. Команда миграции клиента на подписочную модель
@@ -666,15 +660,7 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 2.5.22. Команда валидации платежей 
 ----------------------------------
 
-Команда: ::
-
-    smarty_manage check_payment_status --settings=settings.<settings name>
-    
-Параметры:
-
-``--timeout_minutes`` -- количество минут по прошествии которых платёж считается "устаревшим" и более не  проверяется.    
-    
-Необходимо для платёжных систем, у которых отсутствует автоматическая нотификация. На данный момент поддерживаются: Fortebank и Payture.
+Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
 
 .. cache_customers_dynamic:
 
