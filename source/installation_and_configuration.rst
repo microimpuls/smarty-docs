@@ -413,12 +413,6 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 
     Внимание! Некоторые команды планировщика являются обязательными для функционирования сервиса.
 
-.. _cache-channel-list-command:
-
-2.5.1. Кеширование списка телеканалов для абонентских устройств
----------------------------------------------------------------
-
-Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
 
 .. _epgchannel-import-command:
 
@@ -478,110 +472,6 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 
     smarty_manage epg_channel_import --epg_source_id=1 --epg_channel_id=100 --reimport_icons --settings=settings.<settings name>
 
-.. _epg-import-command:
-
-2.5.3. Импорт EPG
------------------
-
-Команда: ::
-
-    smarty_manage epg_import --settings=settings.<settings name>
-
-Рекомендуется запускать импорт несколько раз в день для поддержания актуальности телепрограммы
-(см. :ref:`Настройка EPG и телеканалов <epg-setup>`).
-Если не произвести импорт EPG, то программа телепередач на устройстве абонента будет пустой.
-
-Для того чтобы произвести импорт EPG для одного определенного источника необходимо передать параметр ``--epg_source_id``
-или ``--epg_source_name``.
-
-В данную команду можно также передать параметр ``--epg_channel_id`` для импорта EPG только для определенного EpgChannel.
-
-Также с помощью параметра ``--actual_days`` можно указать количество дней, когда загруженные EPG считаются актуальными, то есть все EPG, старше чем указанное количество дней, будут удалены (актуально для EPG, загруженной во время предыдущих вызовов команды). Загрузить же прошедшую EPG можно с помощью опции ``--start_date`` - в неё указывается дата, начиная с которой нужно загрузить программы (дата передается в формате YYYY-MM-DD).
-
-Опция ``--force_reimport`` предназначена для принудительного импорта EPG с игнорированием даты последнего обновления.
-
-С помощью опции ``--client_id`` можно ограничить создание объектов телепередачи только конкретным Client (опция актуальная для Smarty с несколькими Client).
-
-Также эта команда позволяет генерировать на основе загруженного EPG контент и подборки, для этого необходимо передать параметр ``--create_content``.
-Если необходимо только сгенерировать контент и подборки, то помимо предыдущего параметра нужно передать параметр ``--ignore_epg_import``.
-Для данной опции работает фильтрация по EpgChannel и по источнику, однако генерироваться контент будет __для всех встречаемых EPG__, а не только загруженных.
-
-.. _premieres-import-command:
-
-2.5.4. Импорт EPG-премьер
--------------------------
-
-Команда: ::
-
-    smarty_manage epg_premiere_import --settings=settings.<settings name>
-
-Рекомендуется запускать 1-2 раза в день для поддержки актуальности списка премьер
-(см. :ref:`Настройка EPG и телеканалов <epg-setup>`).
-Если не произвести импорт, то список премьер на устройстве абонента будет пустой.
-
-В данную команду можно также передать параметр ``--epg_channel_id`` для импорта премьер только для определенного EpgChannel.
-
-.. _check-accounts-command:
-
-2.5.5. Команда списания/продления аккаунтов с помощью встроенного биллинга согласно рассчетным периодам
--------------------------------------------------------------------------------------------------------
-
-Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands#check_streams
-
-.. _check-streams-command:
-
-2.5.6. Опрос анализаторов TS-потоков MicroTS (модуль мониторинга видеопотоков)
-------------------------------------------------------------------------------
-
-Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands#check_streams
-
-.. _send-activation-expires-messages-command:
-
-2.5.7. Рассылка информационных сообщений на экраны устройств и email о приближении срока деактивации/необходимости оплаты
--------------------------------------------------------------------------------------------------------------------------
-
-Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
-
-.. _clean-old-messages-command:
-
-2.5.8. Очистка старых недоставленных информационных сообщений
--------------------------------------------------------------
-
-Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
-
-.. _resend-sms-command:
-
-2.5.9. Повторная отправка SMS-сообщений, недоставленных с первого раза
-----------------------------------------------------------------------
-
-Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
-
-.. _delete-authkeys:
-
-2.5.10. Команда удаления всех сессий авторизации всех аккаунтов для заданного Client ID
---------------------------------------------------------------------------------------
-
-Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
-
-.. _check_stream_services:
-
-2.5.11. Команда проверки доступности стриминг-сервисов для механизма отказоустойчивости
----------------------------------------------------------------------------------------
-
-Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
-
-.. _make_autopayments:
-
-2.5.12. Команда совершения автоплатежей
---------------------------------------------------------------------------------------
-
-Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
-
-.. _migrate_to_nb:
-2.5.13. Команда миграции клиента на подписочную модель
---------------------------------------------------------------------------------------
-
-Актуальная документация: https://microimpuls.com/docs/smarty/external-billing-integration/billing_subscription_type
 
 .. _recache_icons:
 
@@ -597,33 +487,6 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
 Команда проверяет и сохраняет в кэше существование иконок для всех EpgChannel по размерам, указанным в
 ``SMARTY_DEFAULT_ICON_SIZE`` и ``SMARTY_DEFAULT_ICON_SIZES``.
 
-.. _delete_old_reports:
-
-2.5.15. Очистка старых отчетов
--------------------------
-
-Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
-
-.. _clear_customer_log:
-
-2.5.16. Очистка лога действий абонента
---------------------------------------
-
-Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
-
-.. _cache_max_online:
-
-2.5.17. Сохранение максимального числа абонентов онлайн для статистики
-----------------------------------------------------------------------
-
-Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
-    
-.. _save_stats:
-
-2.5.18. Сбор и хранение статистики по каждому клиенту
------------------------------------------------------
-
-Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
 
 .. _crontab-example:
 
@@ -647,41 +510,6 @@ SMARTY_ADDITIONAL_LANGUAGES ``list``
     smarty_manage make_vodpvr --client_id=<client_id> --settings=settings.<settings name>
 
 Выполняет создание видео для каждой программы, если для нее существует канал ведущий архивную запись. Отличается от контента
-
-.. collect_daily_stats:
-
-2.5.21. Команда сбора дополнительной статистики для отчета по количеству пользователей
---------------------------------------------------------------------------------------
-
-Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
-
-.. check_payment_status:
-
-2.5.22. Команда валидации платежей 
-----------------------------------
-
-Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
-
-.. cache_customers_dynamic:
-
-2.5.23. Команда кеширования данных для графиков "Динамики абонентов"
---------------------------------------------------------------------
-
-Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
-
-.. remove_viewed_content_history:
-
-2.5.24. Команда очистки истории просмотров фильмов для всех абонентов
----------------------------------------------------------------------
-
-Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
-
-.. reports_remove_old_data:
-
-2.5.25. Команда очистки статистических данных в Smarty
-------------------------------------------------------
-
-Актуальная документация: https://microimpuls.com/docs/smarty/configuring-and-management/management-commands
 
 
 2.6. Запуск, перезапуск и остановка Smarty
